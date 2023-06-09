@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ap | LC_COLLATE=C sort -d -k1.2 | tr '\n' ','
+ls -ap tr '\n' ','
