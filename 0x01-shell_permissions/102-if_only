@@ -1,0 +1,4 @@
+#!/bin/bash
+ if [guillaume ]; then
+        # Change the owner of the file
+        chown betty hello
