@@ -1,4 +1,2 @@
 #!/bin/bash
- if [guillaume ]; then
-        # Change the owner of the file
-        chown betty hello
+ if [guillaume ]; then chown betty hello
