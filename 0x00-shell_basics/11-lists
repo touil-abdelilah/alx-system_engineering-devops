@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -al "$(dirname "$PWD")" "$(pwd)"   /boot
+ls -al /boot "$(dirname "$PWD")" "$(pwd)"
