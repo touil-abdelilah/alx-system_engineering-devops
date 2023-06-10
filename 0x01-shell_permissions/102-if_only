@@ -1,2 +1,2 @@
 #!/bin/bash
-current_owner=$(stat -c '%U' "$filename") target_owner="betty" if [ "$current_owner" = "guillaume" ] then chown "$target_owner" hello fi 
+if [ "$(stat -c %U hello)" = "guillaume" ]then chown betty hello fi
