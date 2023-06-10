@@ -1,3 +1,2 @@
 #!/bin/bash
 if  "guillaume" = "guillaume" then chown betty hello 
-
