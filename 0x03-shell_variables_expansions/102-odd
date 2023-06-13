@@ -1,2 +1,2 @@
 #!/bin/bash
-sed -n '1~2p'
+while IFS= read -r line | do read -r | echo $line
