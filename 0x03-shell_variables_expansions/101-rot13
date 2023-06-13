@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(echo "$text" | tr 'A-Za-z' 'N-ZA-Mn-za-m')
+input_file="$1" | output_file="${input_file%.*}_encoded.${input_file##*.}" | tr 'A-Za-z' 'N-ZA-Mn-za-m' < "$input_file" > "$output_file"
