@@ -1,6 +1,6 @@
 # Understanding Processes and Signals
 
-Welcome to the README on Processes and Signals! This guide will help you understand the concepts of processes, PIDs, signals, and commands related to process management in Unix-like operating systems.
+This guide will help you understand the concepts of processes, PIDs, signals, and commands related to process management in Unix-like operating systems.
 
 ## Introduction
 
