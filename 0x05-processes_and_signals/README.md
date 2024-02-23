@@ -1,6 +1,6 @@
 # Understanding Processes and Signals
 
-Welcome to the README on Processes and Signals! This guide will help you understand the concepts of processes, PIDs, signals, and commands related to process management in Unix-like operating systems.
+This guide will help you understand the concepts of processes, PIDs, signals, and commands related to process management in Unix-like operating systems.
 
 ## Introduction
 
@@ -38,7 +38,7 @@ In Unix-like operating systems, a process is an instance of a running program. E
 - Two signals, `SIGKILL` and `SIGSTOP`, cannot be ignored by processes.
 - `SIGKILL` forces termination of a process, while `SIGSTOP` suspends a process.
 
-## Explaining Commands
+## Important Commands
 
 ### `ps`
 
