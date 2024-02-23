@@ -10,10 +10,10 @@ counter=1
 # while coungter is less than 10 keep iterating
 while [ $counter -le 10 ]; do
 	# displays bad luck for the 4th loop iteration
-	if [[ $counter -le 4 ]]; then
+	if [[ $counter == 4 ]]; then
 		echo "bad luck"
 	# displays good luck for the 8th loop iteration
-	elif [[ $counter -gt 4 ]] && [[ $counter -le 8 ]]; then
+	elif [[ $counter == 8 ]]; then
 		echo "good luck"
 	else
 		echo "Best School"
