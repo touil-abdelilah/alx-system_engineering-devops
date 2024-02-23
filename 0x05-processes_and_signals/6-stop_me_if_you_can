@@ -2,11 +2,11 @@
 # This script stops the 4-to_infinity_and_beyond process without using kill or killall.
 
 # Find the PID of the 4-to_infinity_and_beyond process
-pid=$(ps aux | grep "4-to_infinity_and_beyond" | grep -v grep | awk '{print $2}')
+pid=$(pgrep -f "4-to_infinity_and_beyond")
 
 # Check if the PID is found
 if [ -n "$pid" ]; then
     # Use the command `kill -15` to send a termination signal to the process
-    echo "Stopping process 4-to_infinity_and_beyond (PID: $pid)..."
-    kill -15 "$pid"
+    # Send an interrupt signal (SIGINT) to the process
+    kill -s SIGINT "$pid"
 fi
