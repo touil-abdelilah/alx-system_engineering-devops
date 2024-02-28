@@ -1,2 +1,2 @@
-#!/usr/bin/env ruby -na
-puts $F.grep(/from:|to:|flags:/).map{|x| x.split(':')[-1]}.join(',').gsub(/[\[\]]/, '')
+#!/usr/bin/env ruby
+puts ARGV[0].scan(/\[from:(.*?)\]|\[to:(.*?)\]|\[flags:(.*?)\]/).map { |match| match.compact.last }.join(',')
