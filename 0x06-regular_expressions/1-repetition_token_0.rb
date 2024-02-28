@@ -3,7 +3,7 @@
 # Function to check if the input string matches the regular expression
 def match_pattern(str)
   # Regular expression to match the pattern
-  regex = /hb(t*)n/
+  regex = /hb(t{2,5})n/
 
   # Check if the input string matches the regular expression
   if str.match?(regex)
