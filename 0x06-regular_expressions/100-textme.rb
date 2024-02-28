@@ -1,2 +1,2 @@
-#!/usr/bin/env ruby
-puts File.read(ARGV[0]).scan(/(Sent|Receive) SMS.*?\[from:(.*?)\].*?\[to:(.*?)\].*?\[flags:(.*?)\]/).map { |entry| "#{entry[1]},#{entry[2]},#{entry[3]}" }
+#!/usr/bin/env ruby -na
+puts $F.grep(/from:|to:|flags:/).map{|x| x.split(':')[-1]}.join(',').gsub(/[\[\]]/, '')
