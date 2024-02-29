@@ -25,5 +25,3 @@
 - For detailed information about these commands and utilities, refer to their respective man pages or use the `help` option followed by the command name in the terminal.
   - Example: `man ifconfig`, `man telnet`, `man nc`
   - Example: `telnet --help`, `nc --help`, `cut --help`
-
-This readme provides an overview of localhost, 0.0.0.0, the hosts file, and introduces the Netcat utility along with other useful networking commands. It aims to serve as a quick reference for understanding these fundamental networking concepts and tools.
