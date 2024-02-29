@@ -1,15 +1,6 @@
 #!/bin/bash
 
-# Check if the script is running inside Docker
-if grep -q docker /proc/1/cgroup; then
-    # Update localhost resolution
-    echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts > /dev/null
-
-    # Update facebook.com resolution
-    echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts > /dev/null
-
-    echo "Configuration updated successfully."
-else
-    echo "This script should be run inside Docker."
-    exit 1
-fi
+# Update localhost resolution
+sed -i 's/127.0.0.1 localhost/127.0.0.2 localhost/' /etc/hosts
+# Update facebook.com resolution
+sed -i 's/facebook.com/8.8.8.8 facebook.com/' /etc/hosts
