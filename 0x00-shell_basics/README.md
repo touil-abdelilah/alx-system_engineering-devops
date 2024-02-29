@@ -134,5 +134,3 @@ This comprehensive guide covers fundamental concepts and commands for working wi
 - **LTS:** LTS stands for "Long-Term Support." It refers to versions of software or operating systems that receive extended support and updates over an extended period.
 
 ---
-
-This README template provides a structured guide for understanding shell basics, covering essential concepts, commands, and keyboard shortcuts for working with the shell in Unix-like operating systems. Feel free to explore each topic further for detailed information and usage examples. Happy scripting!
