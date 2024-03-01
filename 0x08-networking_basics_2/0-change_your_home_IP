@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# This script configures DNS resolution for localhost and facebook.com
 
-# Update localhost resolution
-sed -i 's/127.0.0.1 localhost/127.0.0.2 localhost/' /etc/hosts
-# Update facebook.com resolution
-sed -i 's/facebook.com/8.8.8.8 facebook.com/' /etc/hosts
+# Update /etc/hosts file to set localhost to 127.0.0.2
+echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
+
+# Update /etc/hosts file to set facebook.com to 8.8.8.8
+echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
+
+# Flush DNS cache to apply changes
+sudo systemctl restart systemd-resolved
