@@ -1,2 +1,33 @@
-#!/usr/bin/bash
-netstat -utlp
+#!/usr/bin/env bash
+# Displays listening TCP and UDP ports with their associated PID and program name
+
+# Display active internet connections (only servers)
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+netstat -tuln | awk 'NR > 2 {print $1, $4, $5, $6, $7}' | while read line; do
+    protocol=$(echo "$line" | awk '{print $1}')
+    local_address=$(echo "$line" | awk '{print $2}')
+    foreign_address=$(echo "$line" | awk '{print $3}')
+    state=$(echo "$line" | awk '{print $4}')
+    pid_program=$(echo "$line" | awk '{print $5}')
+    pid=$(echo "$pid_program" | awk -F '/' '{print $1}')
+    program=$(echo "$pid_program" | awk -F '/' '{print $2}')
+    echo "$protocol $local_address $foreign_address $state $pid_program"
+done
+
+# Display active UNIX domain sockets (only servers)
+echo "Active UNIX domain sockets (only servers)"
+echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
+netstat -xln | awk 'NR > 2 {print $1, $2, $3, $4, $5, $6, $7, $8}' | while read line; do
+    proto=$(echo "$line" | awk '{print $1}')
+    refcnt=$(echo "$line" | awk '{print $2}')
+    flags=$(echo "$line" | awk '{print $3}')
+    type=$(echo "$line" | awk '{print $4}')
+    state=$(echo "$line" | awk '{print $5}')
+    inode=$(echo "$line" | awk '{print $6}')
+    pid_program=$(echo "$line" | awk '{print $7}')
+    pid=$(echo "$pid_program" | awk -F '/' '{print $1}')
+    program=$(echo "$pid_program" | awk -F '/' '{print $2}')
+    path=$(echo "$line" | awk '{print $8}')
+    echo "$proto $refcnt $flags $type $state $inode $pid_program $path"
+done
