@@ -6,6 +6,3 @@ echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
 
 # Update /etc/hosts file to set facebook.com to 8.8.8.8
 echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
-
-# Flush DNS cache to apply changes
-sudo systemctl restart systemd-resolved
