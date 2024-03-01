@@ -2,4 +2,4 @@
 # This script displays all active IPv4 IPs on the machine
 
 # Use ifconfig to get information about network interfaces and filter IPv4 addresses
-ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | awk '{print $2}' | grep -v '127.0.0.1'
+ip -4 addr show | grep -oP 'inet \K[\d.]+'
