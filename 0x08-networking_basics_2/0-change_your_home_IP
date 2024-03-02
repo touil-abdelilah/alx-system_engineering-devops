@@ -2,5 +2,5 @@
 # This script configures DNS resolution for localhost and facebook.com
 
 # Modify /etc/hosts using sed command
-sed -i 's/127.0.0.1 localhost/127.0.0.1 localhost\n127.0.0.2 localhost/g' /etc/hosts
-sed -i 's/127.0.1.1\s*\(.*\)/127.0.1.1   \1\n8.8.8.8 facebook.com/g' /etc/hosts
+sudo sed -i 's/127.0.0.1 localhost/127.0.0.1 localhost\n127.0.0.2 localhost/g' /etc/hosts
+sudo sed -i 's/127.0.1.1\s*\(.*\)/127.0.1.1   \1\n8.8.8.8 facebook.com/g' /etc/hosts
