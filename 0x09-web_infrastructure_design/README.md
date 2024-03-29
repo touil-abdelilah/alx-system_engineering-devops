@@ -1,40 +1,56 @@
-Web Stack Diagram and Redundancy Explanation
-Introduction
-In the SysAdmin/DevOps track projects, we built a web stack using various components to deploy and manage web applications. Understanding each component's role and ensuring system redundancy are crucial for maintaining a stable and reliable web infrastructure.
+# Web Stack Documentation
 
-Components of the Web Stack:
-Load Balancer (LB):
+## Overview
+Provide a brief overview of the web stack, including its purpose and key components.
 
-Distributes incoming traffic across multiple servers to ensure optimal resource utilization and prevent overloading of any single server.
-Provides fault tolerance by rerouting traffic in case of server failures.
-Redundancy can be achieved by deploying multiple load balancers in active-passive or active-active configurations.
-Web Servers (e.g., Apache, Nginx):
+### Purpose
+Explain the purpose of the web stack and its role in supporting web applications.
 
-Handle HTTP requests from clients and serve web pages or dynamic content.
-Redundancy is achieved by deploying multiple web servers behind a load balancer. If one server fails, the load balancer directs traffic to the healthy servers.
-Database Servers (e.g., MySQL, PostgreSQL):
+### Components
+List the main components of the web stack, such as:
+- Load Balancer
+- Web Servers
+- Database Servers
+- Application Servers
+- Caching Layer
+- Monitoring Tools
 
-Store and manage application data.
-Redundancy is essential to prevent a Single Point of Failure (SPOF) and ensure data availability. Techniques like database replication, clustering, or sharding are used to achieve redundancy.
-Application Servers (e.g., Flask, Django):
+## Components
 
-Execute application logic and interact with the database to retrieve or manipulate data.
-Redundancy can be achieved by deploying multiple application servers and using load balancing techniques to distribute traffic.
-Caching Layer (e.g., Redis, Memcached):
+### Load Balancer
+Describe the load balancer component, including its role, configuration, and redundancy measures.
 
-Stores frequently accessed data in memory to reduce database load and improve application performance.
-Redundancy can be implemented by configuring cache replication or clustering to ensure data availability in case of node failures.
-Monitoring Tools (e.g., Nagios, Prometheus):
+### Web Servers
+Explain the role of web servers in serving web pages and handling HTTP requests. Describe the configuration and redundancy measures for web servers.
 
-Monitor the health and performance of servers, services, and applications.
-Redundancy is achieved by deploying monitoring agents on multiple servers and setting up alerts for immediate notification of issues.
-System Redundancy
-Load Balancer Redundancy: Deploy multiple load balancers in an active-passive or active-active configuration to ensure high availability. In case of a failure, the standby/load balancer takes over to maintain uninterrupted service.
+### Database Servers
+Detail the database servers' role in storing and managing application data. Discuss database replication, clustering, or sharding techniques for redundancy.
 
-Web Server Redundancy: Deploy multiple web servers behind the load balancer. If one server fails, the load balancer distributes traffic to the remaining healthy servers, ensuring continuous availability.
+### Application Servers
+Describe the application servers' role in executing application logic and interacting with the database. Discuss redundancy measures for application servers.
 
-Database Redundancy: Implement database replication, clustering, or sharding techniques to ensure data redundancy and availability. Redundant database servers replicate data in real-time, providing failover capabilities in case of primary server failure.
+### Caching Layer
+Explain the caching layer's role in improving application performance and reducing database load. Describe cache replication or clustering for redundancy.
 
-Application Server Redundancy: Deploy multiple application servers and configure the load balancer to distribute traffic evenly. If one server becomes unavailable, the load balancer redirects traffic to the remaining servers, ensuring uninterrupted service.
+### Monitoring Tools
+Detail the monitoring tools used to monitor server, service, and application health and performance. Discuss redundancy measures for monitoring.
 
-Caching Layer Redundancy: Configure cache replication or clustering to ensure data redundancy and availability. Multiple cache nodes store copies of data, allowing the system to continue functioning even if one node fails.
+## Redundancy Measures
+Explain the redundancy measures implemented in the web stack to ensure high availability and fault tolerance.
+
+### Load Balancer Redundancy
+Describe the load balancer redundancy configuration, such as active-passive or active-active setups.
+
+### Server Redundancy
+Discuss redundancy measures for web servers, database servers, and application servers.
+
+### Data Redundancy
+Explain database replication, clustering, or sharding techniques for ensuring data redundancy and availability.
+
+### Failover Mechanisms
+Describe failover mechanisms implemented to redirect traffic or switch to backup resources in case of component failure.
+
+## Conclusion
+Summarize the key points of the web stack documentation and emphasize the importance of redundancy measures for maintaining a robust and highly available infrastructure.
+
+---
