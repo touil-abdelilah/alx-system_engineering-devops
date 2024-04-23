@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Fix Apache to return a page containing "Hello Holberton"
+
+# Start Apache service if not already running
+service apache2 start
+
+# Navigate to Apache root directory
+cd /var/www/html
+
+# Create an HTML file with "Hello Holberton" content
+echo "Hello Holberton" > index.html
