@@ -5,7 +5,6 @@
 service apache2 start
 
 # Navigate to Apache root directory
-cd /var/www/html
-
+cd /var/www/html || exit
 # Create an HTML file with "Hello Holberton" content
 echo "Hello Holberton" > index.html
