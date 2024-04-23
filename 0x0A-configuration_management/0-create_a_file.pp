@@ -1,14 +1,7 @@
-$path = "/tmp/school"
-
-file { $path:
- ensure => "file",
- owner => "www-data",
- group => "www-data",
- mode => 744
-}
-
-file { $path:
- ensure => "present",
- content => "I love Puppet",
- require => File[$path]
+file { '/tmp/school':
+  ensure  => file,
+  mode    => '0744',
+  owner   => 'www-data',
+  group   => 'www-data',
+  content => "I love Puppet",
 }
