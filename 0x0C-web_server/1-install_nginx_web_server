@@ -1,12 +1,44 @@
-#!/usr/bin/env bash
-# This script installs Nginx on a new Ubuntu machine and configures it to meet certain requirements.
+#!/usr/bin/bash
 
-# Update package lists and install Nginx with the "-y" flag to automatically answer "yes" to prompts
-apt-get update
-apt-get install -y nginx
+# Install nginx
+sudo apt-get update
+sudo apt-get install nginx -y
 
-sed -i 's/^\(listen\s*80;\)/\1 default_server;/' /etc/nginx/sites-available/default
+# Check if nginx is installed successfully
+if [ $? -ne 0 ]; then
+    echo "Error: Nginx installation failed."
+    exit 1
+fi
 
-/etc/init.d/nginx restart
+# Check nginx status
+nginx_status=$(pgrep nginx)
+if [ -z "$nginx_status" ]; then
+    echo "Error: Nginx is not running."
+    exit 1
+fi
 
-echo "Hello World!" > /var/www/html/index.html
+# Configure nginx to listen on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Restart nginx
+sudo service nginx restart
+
+# Check if nginx restarted successfully
+nginx_status=$(pgrep nginx)
+if [ -z "$nginx_status" ]; then
+    echo "Error: Nginx failed to restart."
+    exit 1
+fi
+
+# Test if nginx is listening on port 80 and returning "Hello World!"
+curl_output=$(curl -s http://localhost/)
+if [[ $curl_output == *"Hello World!"* ]]; then
+    echo "Nginx is listening on port 80 and returning 'Hello World!'"
+else
+    echo "Error: Nginx is not returning 'Hello World!'"
+    exit 1
+fi
+
+# Script completed successfully
+echo "Nginx configured successfully."
+exit 0
