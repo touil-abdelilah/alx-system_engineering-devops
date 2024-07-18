@@ -1,23 +1,23 @@
 #!/usr/bin/python3
 """Module for task 1"""
 
-import requests
-
 def top_ten(subreddit):
     """Queries the Reddit API and returns the top 10 hot posts
     of the subreddit"""
     
-    # Define the URL for fetching the top 10 hot posts
-    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+    import requests
+
+    # Send a GET request to the Reddit API to fetch the top 10 hot posts for the given subreddit
+    sub_info = requests.get(
+        "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit),
+        headers={"User-Agent": "My-User-Agent"},  # Include a custom User-Agent to avoid request issues
+        allow_redirects=False  # Prevent automatic redirection to handle invalid subreddits
+    )
     
-    # Make a GET request to the Reddit API
-    response = requests.get(url, headers={"User-Agent": "My-User-Agent"}, allow_redirects=False)
-    
-    # Check if the response status code indicates success
-    if response.status_code >= 300:
-        print('None')
+    # Check if the response status code indicates an error or redirection
+    if sub_info.status_code >= 300:
+        print('None')  # Print 'None' if the subreddit is invalid or if there's an error
     else:
         # Extract and print the titles of the top 10 hot posts
-        data = response.json().get("data", {}).get("children", [])
-        for child in data:
-            print(child.get("data", {}).get("title", "No title available"))
+        [print(child.get("data").get("title"))
+         for child in sub_info.json().get("data").get("children")]
