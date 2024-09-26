@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script generates a MySQL dump of all databases and compresses it into a tar.gz archive.
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <mysql_root_password>"
+    exit 1
+fi
+
+MYSQL_PWD=$1
+DATE=$(date +"%d-%m-%Y")
+
+# Generate the MySQL dump
+mysqldump -u root --all-databases > backup.sql
+
+# Create a compressed archive with the format day-month-year.tar.gz
+tar -czvf "$DATE.tar.gz" backup.sql
+
+# Remove the backup.sql after compression
+rm backup.sql
+
+echo "Backup completed: $DATE.tar.gz"
